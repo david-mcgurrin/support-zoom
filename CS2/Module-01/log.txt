@@ -1,0 +1,31 @@
+➜  Module-01 git:(module1q3) ✗ ./wordCount
+Please enter a sentence: 
+The input contains no words! Why not try again?
+
+
+➜  Module-01 git:(module1q3) ✗ ./wordCount
+Please enter a sentence: hello!
+The input contains 1 word.
+Word 1 contains the most amount of characters(6).
+Word 1 contains the most amount of vowels(2).
+
+
+➜  Module-01 git:(module1q3) ✗ ./wordCount
+Please enter a sentence: hEllo how are yoU?
+The input contains 4 words.
+Word 1 contains the most amount of characters(5).
+Word 1 contains the most amount of vowels(2).
+
+
+➜  Module-01 git:(module1q3) ✗ ./wordCount
+Please enter a sentence:     this IS A SENTENCE      with a LOT of spaces      
+The input contains 9 words.
+Word 4 contains the most amount of characters(8).
+Word 4 contains the most amount of vowels(3).
+
+
+➜  Module-01 git:(module1q3) ✗ ./wordCount
+Please enter a sentence: support zooooOOOoooooom is the best!
+The input contains 5 words.
+Word 2 contains the most amount of characters(15).
+Word 2 contains the most amount of vowels(13).
