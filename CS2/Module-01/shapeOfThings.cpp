@@ -5,37 +5,49 @@ using namespace std;
 int main() {
 
   // Declare and initialise variables
-  int shapeWidth = 19; // The width of the hashtag shape
-  int numRows = 10; // The height of the hashtag shape
-  int midpoint = numRows/2; // The vertical midpoint
-  int rowOffset = 0; // Initialise as 0
+  int hashShapeWidth = 19;
+  int numRows = (hashShapeWidth + 1)/2; // The height of the hashtag shape. Formula used here to maintain the shape no matter what the width
+  int verticalMidpoint = numRows/2;
+  int rowOffset = 0; // Used for the starting position after the midpoint. Initialise as 0
 
   // Loop over the number of rows
   for (int row = 1; row <= numRows; row++) {
+
+    /* Variables for the start and end of the sequences on each row */
+    // Using the verticalMidpoint and the row we can get the variable for each row for the hashtag starting position.
+    // The use of absolute values ensures this works as we move past the halfway point
+    int startingPosition = verticalMidpoint - abs(verticalMidpoint - row + rowOffset);
+
+    // Conveniently the number of hashtags per sequence matches the number attained from the startingPosition formula
+    int numHashesInSequence = startingPosition;
     
-    // Using the midpoint and the row we can get the variable for each row for the hashtag positioning
-    int hashPosition = midpoint - abs(midpoint - row);
+    // The end of the lefthand sequence is simply the starting position and the number of hashtags in that row
+    int leftHandEnd = startingPosition + numHashesInSequence;
 
-    int doubledHashPosition = 2 * hashPosition;
-    int doubledRowOffset = 2 * rowOffset;
+    // The start of the righthand sequence is one plus the full shape width minus the startingPosition variable + the previous startingPosition. This formula ensures the start is two places from the previous row
+    int rightHandStart = (hashShapeWidth + 1) - (startingPosition + (startingPosition - 1));
 
-      // Loop over the shapeWidth for the hashtag on each row
-      for (int hashNum = 1; hashNum <= shapeWidth; hashNum++) {
+    // The end of the righthand sequence is one plus the full shape width minus the startingPosition variable. Adding the one is necessary since the rows start at 1
+    int rightHandEnd = (hashShapeWidth + 1) - startingPosition;
+
+      // Loop over the hashShapeWidth for the hashtag on each row
+      for (int hashNum = 1; hashNum <= hashShapeWidth; hashNum++) {
         
         // Conditional for the main hashtag positioning. Used since the non-middle rows have spaces between hashtags
-        if (row != midpoint && row != (midpoint + 1)) {
+        if (row != verticalMidpoint && row != (verticalMidpoint + 1)) {
 
-          if (((hashNum >= hashPosition + rowOffset) && (hashNum < doubledHashPosition + doubledRowOffset)) // Lefthand side
-            || ((hashNum >= shapeWidth - doubledHashPosition - doubledRowOffset + 2) && (hashNum < shapeWidth - hashPosition - rowOffset + 2))) { // Righthand side
+          if ((hashNum >= startingPosition && hashNum < leftHandEnd)
+            || (hashNum >= rightHandStart && hashNum <= rightHandEnd)) {
             cout << "#";
           } else {
             cout << " ";
           }
-
-        // Otherwise the middle two rows output is more straightforward as no space between the left and right sides
-        } else {
-
-          if (hashNum >= midpoint && hashNum <= shapeWidth - midpoint + 1) {
+          
+        }
+        
+        else {
+          // No spaces in the center so the hashtags go the whole way across
+          if (hashNum >= startingPosition && hashNum <= rightHandEnd) {
             cout << "#";
           } else {
             cout << " ";
@@ -52,13 +64,3 @@ int main() {
 
   return 0;
 }
-
-/* Observations */
-/*
-- For the top left shape the row and number of hashtags present is the same
-- The start of top right shape decreases by 2 each time
-- The hashPosition uses absolute value so that it can be used on both the top half and bottom half
-- This variable can also be subtracted from the shapeWidth to get the position on the righthand side as well as left
-- Added the rowOffset variable since row 6 affects the progression of the hashPosition variable
-- Use of variables means shapeWidth and numRows can be changed and the shape will largely remain the same
-*/
