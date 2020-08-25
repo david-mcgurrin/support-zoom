@@ -4,25 +4,33 @@ using namespace std;
 
 // Create domino struct
 struct domino {
-  int topEnd; // The top half of the domino
-  int bottomEnd; // The bottom half of the domino
-  int spotSum; // The sum of the top and the bottom
+  int topEnd;     // The top half of the domino
+  int bottomEnd;  // The bottom half of the domino
+  int spotSum;    // The sum of the top and the bottom
 };
 
 // Function to add elements to the array
 void fillArray(domino dominoes[], int ARRAY_SIZE) {
-  int topEnd = 0;
-  int bottomEnd = 0;
-  int newValue = 1;
-  int numOfCurrentSpots = 1;
+  int topEnd = 0;               // Initialise the top end of the domino to 0
+  int bottomEnd = 0;            // Initialise the bottom end of the domino to 0
+  
+  // Variable used to track when to update the bottom end value. Coverts the sequence of 0 - 27 into a sequence of 0 - 6 used for the domino bottom end
+  // Initialise as 1 since the first pass through the array sets up the '0,0' aka blank domino
+  int nextBottomEndCounter = 1;
 
+  // Variable used to track how many dominoes there are for each bottom end value
+  // Initialise as 1 since the first pass through the array sets up the '0,0' aka blank domino
+  int numOfDominoesPerValue = 1;
+
+  // Loop through the array
   for (int i = 0; i < ARRAY_SIZE; i++) {
     
-    if (i == newValue) {
-      topEnd = 0; // Reset to 0
-      bottomEnd++; // Increment by 1, up to and including 6
-      numOfCurrentSpots++; // Tracks the number of spots on the current value
-      newValue += numOfCurrentSpots; // Determines when to move to the next value
+    // Conditional statement to check when to increment the bottom end value, i.e. the number of spots
+    if (i == nextBottomEndCounter) {
+      topEnd = 0;               // Reset to 0
+      bottomEnd++;              // Increment the bottom end value by 1 each time the conditional statement is true
+      numOfDominoesPerValue++;  // Increment by 1 each time as each new set of bottom end values has an additional piece
+      nextBottomEndCounter += numOfDominoesPerValue; // Add the numOfDominoesPerValue variable to the counter to determine what value of i moves to the next bottom end value
     }
 
     dominoes[i] = {topEnd, bottomEnd, topEnd + bottomEnd}; // Add a domino struct as an element in the array
