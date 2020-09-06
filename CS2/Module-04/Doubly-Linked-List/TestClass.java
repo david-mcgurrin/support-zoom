@@ -29,13 +29,23 @@ public class TestClass
 
         ReadThis r5 = new ReadThis("five");
 
+        ReadThis r6 = new ReadThis("six");
+
+        ReadThis r7 = new ReadThis("seven");
+        
+        ReadThis r8 = new ReadThis("eight");
+
+        ReadThis r9 = new ReadThis("nine");
+
+        ReadThis r10 = new ReadThis("ten");
+
         
         
         ////
         // We can manually create a linked list
         // with two nodes like this:
 
-        ListNode listHead = new ListNode(r3, new ListNode(r4));
+        ListNode listHead = new ListNode(r2, new ListNode(r3));
         
         ListNode.printNumNodes(); // <- best way to call a static method
         listHead.printNumNodes(); // <- prints the same thing, but should avoid
@@ -46,19 +56,17 @@ public class TestClass
         
         ////
         // Now we can add nodes to the beginning, end, and middle:
-        
+
         listHead = listHead.addNodeToBeginning(new ListNode(r1));
         listHead.printListFromHere();
-        
-        listHead.addNodeToEnd(new ListNode(r5));
+
+        listHead.addNodeToEnd(new ListNode(r4));
+        listHead.printListFromHere();
+
+        listHead.addNodeAfterNode(new ListNode(r5), listHead.next);
         listHead.printListFromHere();
         
-        listHead.addNodeAfterNode(new ListNode(r2), listHead.next);
-        listHead.printListFromHere();
-        
-        ListNode.printNumNodes();
-        
-        
+
         ////
         // Let's test removing nodes from the beginning, middle, and end:
         
@@ -68,23 +76,22 @@ public class TestClass
         listHead = listHead.removeLastNode();
         listHead.printListFromHere();
         
-        // listHead = listHead.removeNode(listHead.next);
-        listHead.printListFromHere();
-        
         listHead = listHead.removeNode(listHead.next);
         listHead.printListFromHere();
         
-        ///
-        // Repopulate the linked list to demonstrate the additional functions
         
-        listHead = listHead.addNodeToBeginning(new ListNode(r2));
-        listHead.printListFromHere();
-
+        ///
+        // Repopulate the linked list to demonstrate the additional methods
+        
         listHead = listHead.addNodeToBeginning(new ListNode(r1));
         listHead.printListFromHere();
 
-        listHead.addNodeToEnd(new ListNode(r5));
+        listHead.addNodeToEnd(new ListNode(r4));
         listHead.printListFromHere();
+
+
+        ///
+        // Additional methods
 
         System.out.println("\nConcatenate Method");
         System.out.println(listHead.concatenate());
@@ -94,7 +101,5 @@ public class TestClass
 
         listHead.printListFromHere();
     }
-    
-    
     
 }
