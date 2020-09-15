@@ -39,7 +39,7 @@ public class Slacks extends Pants {
     return false;
   }
 
-  public Boolean isGoodWithRunners() {
+  public Boolean isGoodWithHikingBoots() {
     return false;
   }
 

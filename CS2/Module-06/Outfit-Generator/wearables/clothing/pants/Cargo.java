@@ -39,8 +39,8 @@ public class Cargo extends Pants {
     return true;
   }
 
-  public Boolean isGoodWithRunners() {
-    return false;
+  public Boolean isGoodWithHikingBoots() {
+    return true;
   }
 
   public Boolean isGoodWithHawaiinShirt() {

@@ -43,8 +43,8 @@ public class Runners extends Shoes {
     return false;
   }
 
-  public Boolean isGoodWithJersey() {
-    return true;
+  public Boolean isGoodForHiking() {
+    return false;
   }
 
   // String method

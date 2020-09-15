@@ -19,6 +19,6 @@ public abstract class Shoes extends Wearable {
 
   public abstract Boolean isGoodWithHawaiinShirt();
 
-  public abstract Boolean isGoodWithJersey();
+  public abstract Boolean isGoodForHiking();
 
 }

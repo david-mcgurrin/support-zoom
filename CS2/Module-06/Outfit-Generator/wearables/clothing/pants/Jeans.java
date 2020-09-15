@@ -40,8 +40,8 @@ public class Jeans extends Pants {
     return true;
   }
 
-  public Boolean isGoodWithRunners() {
-    return true;
+  public Boolean isGoodWithHikingBoots() {
+    return false;
   }
 
   public Boolean isGoodWithHawaiinShirt() {

@@ -31,11 +31,22 @@ public class Hat implements Accessories {
 
   // Boolean methods
   public Boolean isFancy() {
+    if (type != "top hat" && type != "fedora") {
+      return false;
+    }
     return true;
   }
 
   public Boolean isCasual() {
     return true;
+  }
+
+  public Boolean isJewellery() {
+    return false;
+  }
+
+  public Boolean isTie() {
+    return false;
   }
 
   // String method

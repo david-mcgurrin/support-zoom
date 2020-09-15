@@ -36,6 +36,17 @@ public class Watch implements Accessories {
     return true;
   }
 
+  public Boolean isJewellery() {
+    if (color == "silver" || color == "gold") {
+      return true;
+    }
+    return false;
+  }
+
+  public Boolean isTie() {
+    return false;
+  }
+
   // String method
   public String toString() {
     return "The " + type + " watch is " + color + " and the size is " + size;

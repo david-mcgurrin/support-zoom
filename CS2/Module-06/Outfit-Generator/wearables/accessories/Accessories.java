@@ -15,6 +15,10 @@ public interface Accessories {
 
   public Boolean isCasual();
 
+  public Boolean isJewellery();
+
+  public Boolean isTie();
+
   public String toString();
   
 }

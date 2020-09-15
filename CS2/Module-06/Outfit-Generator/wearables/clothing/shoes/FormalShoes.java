@@ -43,7 +43,7 @@ public class FormalShoes extends Shoes {
     return false;
   }
 
-  public Boolean isGoodWithJersey() {
+  public Boolean isGoodForHiking() {
     return false;
   }
 

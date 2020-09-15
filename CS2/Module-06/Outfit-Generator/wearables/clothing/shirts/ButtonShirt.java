@@ -39,7 +39,7 @@ public class ButtonShirt extends Shirts {
     return false;
   }
 
-  public Boolean isGoodWithRunners() {
+  public Boolean isGoodWithHikingBoots() {
     return false;
   }
 

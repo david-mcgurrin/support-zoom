@@ -36,6 +36,14 @@ public class Jewellery implements Accessories {
     return false;
   }
 
+  public Boolean isJewellery() {
+    return true;
+  }
+
+  public Boolean isTie() {
+    return false;
+  }
+
   // String method
   public String toString() {
     return "The " + type + " is " + color + " and the size is " + size;

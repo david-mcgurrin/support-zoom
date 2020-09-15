@@ -39,8 +39,8 @@ public class Sweater extends Shirts {
     return true;
   }
 
-  public Boolean isGoodWithRunners() {
-    return true;
+  public Boolean isGoodWithHikingBoots() {
+    return false;
   }
 
   public Boolean isGoodWithShorts() {

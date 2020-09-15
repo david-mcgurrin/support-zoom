@@ -34,7 +34,7 @@ public class HawaiianShirt extends Shirts {
     return true;
   }
 
-  public Boolean isGoodWithRunners() {
+  public Boolean isGoodWithHikingBoots() {
     return false;
   }
 

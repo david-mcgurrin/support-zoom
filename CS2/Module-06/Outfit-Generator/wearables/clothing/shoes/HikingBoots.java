@@ -43,8 +43,8 @@ public class HikingBoots extends Shoes {
     return false;
   }
 
-  public Boolean isGoodWithJersey() {
-    return false;
+  public Boolean isGoodForHiking() {
+    return true;
   }
 
   // String method

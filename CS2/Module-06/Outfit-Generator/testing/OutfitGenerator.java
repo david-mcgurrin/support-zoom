@@ -29,7 +29,8 @@ public class OutfitGenerator {
   // Method to get an appropriate outfit from the generator
   public Boolean checkStyle() {
 
-    // Create variables to store the random int. This is used as the index in the ArrayList
+    // Create variables to store the random int. This is used as the index in the
+    // ArrayList
     int randomIndexShirts = (int) Math.floor((Math.random() * shirtsArray.size()));
     int randomIndexPants = (int) Math.floor((Math.random() * pantsArray.size()));
     int randomIndexShoes = (int) Math.floor((Math.random() * shoesArray.size()));
@@ -43,19 +44,52 @@ public class OutfitGenerator {
     System.out.println(outerwearArray.get(randomIndexOuterwear).toString());
     System.out.println(accessoriesArray.get(randomIndexAccessories).toString());
 
-    // Return true if there is no item clash. This exits the loop in the test function
-    if (!outfitClashCheck(randomIndexShirts, randomIndexPants, randomIndexShoes, randomIndexOuterwear, randomIndexAccessories)) {
+    // Return true if we find a particularly good match
+    if (outfitMatchCheck(randomIndexShirts, randomIndexPants, randomIndexShoes, randomIndexOuterwear,
+        randomIndexAccessories)) {
+      return true;
+    }
+
+    // Return true if there is no item clash.
+    // This exits the loop in the test function with an acceptable outfit
+    else if (!outfitClashCheck(randomIndexShirts, randomIndexPants, randomIndexShoes, randomIndexOuterwear,
+        randomIndexAccessories)) {
       System.out.println("\n\n");
       return true;
     }
 
-    // Otherwise return false to check again
+    // Otherwise no good outfit generated. Return false to check again
     else {
       return false;
     }
 
   }
 
+  // Method that checks for the best outfit matches
+  public boolean outfitMatchCheck(int r1, int r2, int r3, int r4, int r5) {
+
+    if (shirtsArray.get(r1).isFancy() && pantsArray.get(r2).isFancy() && shoesArray.get(r3).isFancy()) {
+      System.out.println("FORMIDABLE FORMAL ATTIRE FOUND!");
+      return true;
+    }
+
+    else if (shirtsArray.get(r1).isColorful() && pantsArray.get(r2).isGoodWithHawaiinShirt()
+        && shoesArray.get(r3).isGoodWithHawaiinShirt()) {
+      System.out.println("HOLIDAY OUTFIT SORTED!");
+      return true;
+    }
+
+    else if (shirtsArray.get(r1).isGoodWithHikingBoots() && pantsArray.get(r2).isGoodWithHikingBoots()
+        && shoesArray.get(r3).isGoodForHiking() && outerwearArray.get(r4).isCasual()
+        && !accessoriesArray.get(r5).isJewellery()) {
+      System.out.println("PERFECT CLOBBER FOR THE OUTDOORS!");
+      return true;
+    }
+
+    return false;
+  }
+
+  // Method that checks for the bad outfit matches
   public boolean outfitClashCheck(int r1, int r2, int r3, int r4, int r5) {
 
     // Check colors
@@ -72,7 +106,6 @@ public class OutfitGenerator {
       return true;
     }
 
-
     // Item specific
     // Check that the large outerwar doesn't match with shorts
     else if (pantsArray.get(r2).warmWeatherOnly() && !outerwearArray.get(r4).isGoodWithShorts()) {
@@ -81,29 +114,38 @@ public class OutfitGenerator {
     }
 
     // Check for casual shirt and fancy accessories
-    else if (shirtsArray.get(r5).isCasual() && accessoriesArray.get(r5).isFancy()) {
+    else if (shirtsArray.get(r1).isCasual() && accessoriesArray.get(r5).isJewellery()) {
       System.out.println("FANCY ACCESSORIES DON'T GO WITH CASUAL SHIRTS!\n\n");
       return true;
     }
 
-    
+    // Check for casual shirt and fancy accessories
+    else if (pantsArray.get(r2).isCasual() && accessoriesArray.get(r5).isTie()) {
+      System.out.println("UNDER NO CIRCUMSTANCES SHOULD A TIE BE WORN WITH CASUAL PANTS!\n\n");
+      return true;
+    }
+
     // Default to ensuring casual and fancy don't go together
     // Check shoes and pants
-    else if (((shoesArray.get(r3).isFancy() && pantsArray.get(r2).isCasual())
-        && (shoesArray.get(r3).isCasual() && pantsArray.get(r2).isFancy()))
-        
-        // Check shirts and outerwear
-        &&  ((shirtsArray.get(r1).isFancy() && outerwearArray.get(r4).isCasual())
-        && (shirtsArray.get(r1).isCasual() && outerwearArray.get(r4).isFancy()))
-
-        // Check shirts and pants
-        && ((shirtsArray.get(r1).isFancy() && pantsArray.get(r2).isCasual())
-        && (shirtsArray.get(r1).isCasual() && pantsArray.get(r2).isFancy())))
-        
-        {
+    else if ((shoesArray.get(r3).isFancy() && pantsArray.get(r2).isCasual())
+        || (shoesArray.get(r3).isCasual() && pantsArray.get(r2).isFancy())) {
       System.out.println("STYLE MISMATCH!\n\n");
       return true;
-    } 
+    }
+
+    // Check shirts and shoes
+    else if ((shirtsArray.get(r1).isFancy() && shoesArray.get(r3).isCasual())
+        || (shirtsArray.get(r1).isCasual() && shoesArray.get(r3).isFancy())) {
+      System.out.println("STYLE MISMATCH!\n\n");
+      return true;
+    }
+
+    // Check shirts and pants
+    else if ((shirtsArray.get(r1).isFancy() && pantsArray.get(r2).isCasual())
+        || (shirtsArray.get(r1).isCasual() && pantsArray.get(r2).isFancy())) {
+      System.out.println("STYLE MISMATCH!\n\n");
+      return true;
+    }
 
     return false;
   }
@@ -113,7 +155,7 @@ public class OutfitGenerator {
     shirtsArray.add(new TShirt("green", 36));
     shirtsArray.add(new ButtonShirt("grey", 36));
     shirtsArray.add(new HawaiianShirt("orange", 40));
-    shirtsArray.add(new Sweater("navy", 36));
+    shirtsArray.add(new Sweater("white", 36));
     shirtsArray.add(new Jersey("red", 38, "Liverpool"));
     shirtsArray.add(new TShirt("white", 30));
     shirtsArray.add(new ButtonShirt("white", 36));
@@ -156,7 +198,7 @@ public class OutfitGenerator {
     accessoriesArray.add(new Tie("blue", "medium", "stripy"));
     accessoriesArray.add(new Watch("silver", "small", "analog"));
     accessoriesArray.add(new Jewellery("gold", "medium", "chain"));
-    accessoriesArray.add(new Hat("red", "small", "baseball"));
+    accessoriesArray.add(new Hat("red", "small", "baseball cap"));
     accessoriesArray.add(new Tie("black", "medium", "skinny"));
   }
 
