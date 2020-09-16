@@ -17,6 +17,8 @@ Each of these is its own package containing abstract classes; `Shirts`, `Pants`,
 
 And finally there are subclasses for each of these which inherit the methods.
 
+**Note:** The Outfit Generator does not currently support ladies styles.
+
 ## Characteristics
 
 Each abstract class and the interface list a number of methods, all of which must be used by the subclasses.
