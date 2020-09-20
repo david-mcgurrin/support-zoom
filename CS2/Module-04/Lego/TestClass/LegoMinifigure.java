@@ -10,13 +10,27 @@ public class LegoMinifigure {
   // Using overloading as not each minifigure will have a hat and two items
   // Basic constructor 
   public LegoMinifigure(String name) {
-    this.name = name;
+    this(name, null, null, null);
+  }
+
+  // Constructor for a name and a hat
+  public LegoMinifigure(String name, LegoHat hat) {
+    this(name, hat, null, null);
   }
 
   // Constructor for a name and one item. Defaults to the left hand if only carrying one item when created
   public LegoMinifigure(String name, LegoItem leftHand) {
-    this.name = name;
-    this.leftHand = leftHand;
+    this(name, null, leftHand, null);
+  }
+
+  // Constructor for a name, a hat and one item. Defaults to the left hand if only carrying one item when created
+   public LegoMinifigure(String name, LegoHat hat, LegoItem leftHand) {
+    this(name, hat, leftHand, null);
+  }
+
+  // Constructor for a name and two items
+  public LegoMinifigure(String name, LegoItem leftHand, LegoItem rightHand) {
+    this(name, null, leftHand, rightHand);
   }
 
   // Full constructor for the Lego minifigure

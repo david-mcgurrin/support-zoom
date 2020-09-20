@@ -17,6 +17,8 @@ public class TestClass {
 
     LegoMinifigure legoPerson3 = new LegoMinifigure("Kimberly", leftHand); // Object using the name and one item
 
+    LegoMinifigure legoPerson4 = new LegoMinifigure("Ledly", hat, leftHand); // Object using the name, hat and one item
+
 
     // Initial output
 
@@ -27,6 +29,8 @@ public class TestClass {
     System.out.println(legoPerson2.toString());
 
     System.out.println(legoPerson3.toString());
+
+    System.out.println(legoPerson4.toString());
 
     System.out.println("");
     
