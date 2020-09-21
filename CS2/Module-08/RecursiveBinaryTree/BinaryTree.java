@@ -89,4 +89,98 @@ public class BinaryTree
         // Return all the leaves part of this tree
         return result;
     }
+    
+    // Return true/false depending on whether the trees match
+    public boolean hasSameContentsAs(BinaryTree tree)
+    {
+        // Base case: if neither the original tree nor the parameter tree have children we check to see if the data matches
+        if (leftChild == null && rightChild == null
+             && tree.leftChild == null && tree.rightChild == null)
+        {
+            // Return true if the root tree data matches the parameter tree
+            if (data == tree.data)
+            {
+                return true;
+            }
+        }
+
+        // Conditions to check against null nodes
+        // If the right child of the original tree is null and the corresponding parameter tree child is not null return false
+        if (leftChild != null && rightChild == null
+            && tree.leftChild != null && tree.rightChild != null)
+        {
+            return false;
+        }
+
+        // If the left child of the original tree is null and the corresponding parameter tree child is not null return false
+        if (leftChild == null && rightChild != null
+            && tree.leftChild != null && tree.rightChild != null)
+        {
+            return false;
+        }
+
+        // If the right child of the parameter tree is null and the corresponding original tree child is not null return false
+        if (leftChild != null &&  rightChild != null
+            && tree.leftChild != null && tree.rightChild == null)
+        {
+            return false;
+        }
+
+        // If the left child of the original tree is null and the corresponding original tree child is not null return false
+        if (leftChild != null &&  rightChild != null
+            && tree.leftChild == null && tree.rightChild != null)
+        {
+            return false;
+        }
+
+        // Recursive cases
+        // If the node has children return whether the parameter tree data matches as well as checking the recursive function against the tree's left and right children
+        if (leftChild != null && rightChild != null) {
+            return data == tree.data && leftChild.hasSameContentsAs(tree.leftChild)
+            && rightChild.hasSameContentsAs(tree.rightChild);
+        }
+
+        // If no right child call the method on only the tree's left child
+        if (leftChild != null && rightChild == null) {
+            return data == tree.data && leftChild.hasSameContentsAs(tree.leftChild);
+        }
+
+        // If no left child call the method on only the tree's right child
+        if (rightChild != null && leftChild == null) {
+            return data == tree.data && rightChild.hasSameContentsAs(tree.rightChild);
+        }
+
+        return false;
+    }
+
+    // Returns the count of all the nodes
+    public int numberOfNodes()
+    {
+        // Variables to track the count
+        int leftCount = 0;
+        int rightCount = 0;
+
+        // Base case: if there are no children then return 1
+        if (leftChild == null && rightChild == null)
+        {
+            return 1;
+        }
+
+        // Recursive case
+        // Count the left child nodes
+        if (leftChild != null)
+        {
+            leftCount = leftChild.numberOfNodes();
+        }
+
+        // Count the right child nodes
+        if (rightChild != null)
+        {
+            rightCount = rightChild.numberOfNodes();
+        }
+        
+        // Return the count of the left nodes and right nodes along with adding 1 for the root node
+        return leftCount + rightCount + 1;
+    }
+
 }
