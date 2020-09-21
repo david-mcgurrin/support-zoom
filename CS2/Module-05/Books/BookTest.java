@@ -3,21 +3,14 @@
 public class BookTest {
 
   // Method to populate the bookcase with all the books
-  public static void addBooksToBookcase(Bookcase bookcase, Book[] books) {
-
-    int shelfNum = 0;  // Used for tracking the current shelf.
+  public static void populateBookcase(Bookcase bookcase, Book[] books) {
 
     // Iterate through the array
     for (int i = 0; i < books.length; i++) {
       
-      // 10 books per shelf so update this accordingly
-      if (i % 10 == 0) {
-        shelfNum++;
-      }
+      // Add the individual book to the bookcase
+      bookcase.addBookToBookcase(books[i], i);
 
-      // Add the individual book to the shelf
-      bookcase.addBookToShelf(books[i], shelfNum);
-      
     }
 
   }
@@ -82,7 +75,7 @@ public class BookTest {
     };
 
     // Call method to populate the bookcase
-    addBooksToBookcase(bookcase, books);
+    populateBookcase(bookcase, books);
 
 
     /* Testing - create readers and take/return books */
@@ -96,6 +89,7 @@ public class BookTest {
 
     person1.returnBook(bookcase, books[49]);
 
+    System.out.println("\n------\n");
 
     // Standard withdraw
     Reader person2 = new Reader("Betty");
@@ -104,6 +98,7 @@ public class BookTest {
 
     System.out.println(newBookPerson2);
 
+    System.out.println("\n------\n");
 
     // Attempt to withdraw book someone else has withdrawn
     Reader person3 = new Reader("Charlie");
@@ -121,6 +116,7 @@ public class BookTest {
 
     person3.returnBook(bookcase, books[32]);
 
+    System.out.println("\n------\n");
 
     // Attempt to withdraw more than one book
     Reader person4 = new Reader("Dawn");
