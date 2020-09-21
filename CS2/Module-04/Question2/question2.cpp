@@ -13,26 +13,21 @@ float getAverageScore(int scoreArray[], int ARRAY_SIZE) {
 
   }
 
-  // To get the same average result as Java we multiply the array size by 2 to get 10
-  return total / (ARRAY_SIZE * 2);
+  return total / ARRAY_SIZE;
 }
 
 
 int main() {
 
-  // Don't have the luxury of using a .length() method so need to define the array size
-  const int ARRAY_SIZE = 5; // Will only 5 variables in the array
 
-  int scores[ARRAY_SIZE];
+  const int ARRAY_SIZE = 10; // Array size of 10
 
-  int score = 0;  // Variable to add up the scores
-  
+  int scores[ARRAY_SIZE] = {};  // Initialise the array. Sets every element in the array to 0
+
   // Array incremented by 2 each time meaning the array will have empty entries
-  for (int i = 0; i < ARRAY_SIZE; i ++) {
+  for (int i = 0; i < ARRAY_SIZE; i += 2) {
     
-    scores[i] = score;  // Set the array value equal to the score
-
-    score += 2;         // Incremeent the score by 2
+    scores[i] = i;  // Set the array element equal to the value of i
 
   }
 
