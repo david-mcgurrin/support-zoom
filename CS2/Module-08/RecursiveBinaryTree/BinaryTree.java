@@ -8,7 +8,7 @@ public class BinaryTree
     
     // A constructor that takes root data only and
     // makes a tree with no children (i.e., a leaf)
-    public BinaryTree(final String d) 
+    public BinaryTree(String d) 
     {
         data = d;
         leftChild = null;
@@ -17,7 +17,7 @@ public class BinaryTree
     
     // A constructor that takes root data as well as two subtrees
     // which then become children to this new larger tree.
-    public BinaryTree(final String d, final BinaryTree left, final BinaryTree right)
+    public BinaryTree(String d, BinaryTree left, BinaryTree right)
     {
         data = d;
         leftChild = left;
@@ -30,9 +30,9 @@ public class BinaryTree
     public BinaryTree getRightChild() { return rightChild; }
     
     // Set methods
-    public void setData(final String d) { data = d; }
-    public void setLeftChild(final BinaryTree left) { leftChild = left; }
-    public void setRightChild(final BinaryTree right) { rightChild = right; }
+    public void setData(String d) { data = d; }
+    public void setLeftChild(BinaryTree left) { leftChild = left; }
+    public void setRightChild(BinaryTree right) { rightChild = right; }
     
     
     // Return the height of the tree
@@ -64,7 +64,7 @@ public class BinaryTree
     // Return all the leaves of the tree
     public ArrayList<String> leafData()  
     {
-        final ArrayList<String> result = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<String>();
         
         if (data != null) 
         {
