@@ -1,12 +1,18 @@
 print "Please enter your name: "
 
 name = gets.chomp.capitalize
+birthday_greeting = "Happy Birthday"
 
-count = 1
+count = 0
 
-while count <= 4
+until count == 4
 
-  puts count == 3 ? "Happy Birthday dear #{name}" : "Happy Birthday to you"
-
+  case count
+  when 2
+    puts "#{birthday_greeting} dear #{name}"
+  else
+    puts "#{birthday_greeting} to you"
+  end
+  
   count+=1
 end
