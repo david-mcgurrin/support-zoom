@@ -6,7 +6,8 @@ count = 1
 
 while count <= 4
 
-  puts count == 3 ? "Happy Birthday dear #{name}" : "Happy Birthday to you"
+  print "Happy Birthday"
+  puts count == 3 ? " dear #{name}" : " to you"
 
   count+=1
 end
