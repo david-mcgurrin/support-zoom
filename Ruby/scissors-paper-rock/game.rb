@@ -40,8 +40,10 @@ if (choices.include? input1) && (choices.include? input2)
 
   if winner1
     puts "#{input1.capitalize} #{winner_verbs[input1]} #{input2}"
+    puts "Player 1 wins"
   elsif winner2
     puts "#{input2.capitalize} #{winner_verbs[input2]} #{input1}"
+    puts "Player 2 wins"
   else
     puts "Draw!"
   end
