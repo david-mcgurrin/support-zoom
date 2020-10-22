@@ -34,14 +34,32 @@ until choice == 4
 
   elsif choice == 2
 
-    user_books.push(library.pop)
+    print "What book would you like to take? "
+
+    book_choice = gets.chomp.to_i
+
+    get_book = library[book_choice]
+
+    library.delete_at(book_choice)
+
+    user_books.push(get_book)
+
 
   elsif choice == 3
 
-    library.push(user_books.pop)
+    print "What book would you like to return? "
+
+    book_choice = gets.chomp.to_i
+
+    get_book = user_books[book_choice]
+
+    user_books.delete_at(book_choice)
+
+    library.push(get_book)
 
   end
 
+  puts
 end
 
 puts "Users' books"
