@@ -3,36 +3,48 @@ change = gets.chomp.to_f
 
 change_count = 0
 
-puts "Change due: #{change}"
+new_change = change
 
-new_change = change % 2
+toonie_count = 0
+loonie_count = 0
+quarter_count = 0
+dime_count = 0
+nickel_count = 0
 
-change_count += 1
+while new_change > 0.05
 
-puts new_change.round(2)
+  if new_change >= 2
+    new_change = (new_change % 2).round(2)
+    toonie_count += 1
 
-new_change = new_change % 1
+  elsif new_change >= 1
+    new_change = (new_change % 1).round(2)
+    loonie_count += 1
 
-change_count += 1
+  elsif new_change >= 0.25
+    new_change = (new_change % 0.25).round(2)
+    quarter_count += 1
 
-puts new_change.round(2)
+  elsif new_change >= 0.10
 
-new_change = new_change % 0.25
+    new_change = (new_change % 0.10).round(2)
+    dime_count += 1
 
-change_count += 1
+  elsif new_change >= 0.05
+    new_change = (new_change % 0.05).round(2)
+    nickel_count += 1
+  end
 
-puts new_change.round(2)
+  puts new_change
 
-new_change = new_change % 0.10
+  change_count += 1
 
-change_count += 1
 
-puts new_change.round(2)
+end
 
-new_change = new_change % 0.05
-
-change_count += 1
-
-puts new_change.round(2)
-
-puts "Number of coins: #{change_count}"
+puts "Number of coins #{change_count}"
+puts "Toonie: #{toonie_count}"
+puts "Loonie: #{loonie_count}"
+puts "Quarter: #{quarter_count}"
+puts "Dime: #{dime_count}"
+puts "Nickel: #{nickel_count}"
