@@ -11,7 +11,11 @@ quarter_count = 0
 dime_count = 0
 nickel_count = 0
 
-while new_change > 0.05
+#puts (new_change * 20).round / 20.0
+
+new_change = (new_change * 20).round / 20.0
+
+while new_change > 0
 
   if new_change >= 2
     toonie_count = (new_change / 2).floor
@@ -35,7 +39,7 @@ while new_change > 0.05
 
   end
 
-  puts new_change
+  #puts new_change
 
   change_count += 1
 
