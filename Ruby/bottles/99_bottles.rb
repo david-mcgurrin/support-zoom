@@ -15,6 +15,19 @@ def final_verse(start_num)
 end
 
 
-verse(1)
-puts
-final_verse(99)
+print "How many bottles ya slugging today chief? "
+num_bottles = gets.chomp.to_i
+
+original_num = num_bottles
+
+while num_bottles > 0
+
+  verse(num_bottles)
+  
+  puts
+
+  final_verse(original_num) if num_bottles == 1
+
+  num_bottles -= 1
+  
+end
