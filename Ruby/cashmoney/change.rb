@@ -14,25 +14,25 @@ nickel_count = 0
 while new_change > 0.05
 
   if new_change >= 2
+    toonie_count = (new_change / 2).floor
     new_change = (new_change % 2).round(2)
-    toonie_count += 1
 
   elsif new_change >= 1
+    loonie_count = (new_change / 1).floor
     new_change = (new_change % 1).round(2)
-    loonie_count += 1
 
   elsif new_change >= 0.25
+    quarter_count = (new_change / 0.25).floor
     new_change = (new_change % 0.25).round(2)
-    quarter_count += 1
 
   elsif new_change >= 0.10
-
+    dime_count = (new_change / 0.10).floor
     new_change = (new_change % 0.10).round(2)
-    dime_count += 1
 
   elsif new_change >= 0.05
+    nickel_count = (new_change / 0.05).floor
     new_change = (new_change % 0.05).round(2)
-    nickel_count += 1
+
   end
 
   puts new_change
