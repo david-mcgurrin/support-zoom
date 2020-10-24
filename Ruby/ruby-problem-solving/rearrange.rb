@@ -1,34 +1,29 @@
-begin
-  print "Enter a number: "
-  number = Integer(gets)
-rescue
-  retry
+def negative_sort(num)
+  
+  num.shift
+
+  minimum_number = num.select {|n| n.to_i > 0}.min.to_i
+
+  largest_num = minimum_number * (10 ** (num.length.to_i - 1))
+
+  remaining_num = num.sort.join('').split('').select {|n| n.to_i > minimum_number}.join('').to_i
+  
+  (largest_num + remaining_num) * -1
+
 end
+
+print "Enter a number please: "
+number = gets.chomp
+
+until number.to_i.to_s == number
+  print "Must be an integer. Please try again: "
+  number = gets.chomp
+end
+
+number = number.to_i
 
 numbers = number.to_s.split('');
 
-if numbers.first == "-"
+sorted = numbers.first == "-" ? negative_sort(numbers) : numbers.sort.reverse.join("").to_i
 
-  numbers.shift
-
-  number_array_length = numbers.length
-
-  minimum_number = numbers.select {|n| n.to_i > 0}.min
-
-  sorted_array = numbers.sort.join('').to_i.to_s.split('')
-
-  sorted_array.shift
-
-  largest_num = minimum_number.to_i * (10 ** (number_array_length.to_i - 1))
-
-  remaining_num = sorted_array.join('').to_i
-
-  puts (largest_num + remaining_num) * -1
-
-else
-
-  sorted_array = numbers.sort.reverse
-
-  puts sorted_array.join('').to_i
-  
-end
+puts sorted
