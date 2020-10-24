@@ -1,17 +1,13 @@
-print "Please enter the shape size: "
+print "How big is your triangle? "
+input = gets.chomp
 
-shape_size = gets.chomp.to_i
+until input.to_i.to_s == input
+  print "Try again: "
+  input = gets.chomp
+end
 
-num_asterisks_per_row = 1
+input = input.to_i
 
-for i in 1..shape_size
-
-  for j in 1..num_asterisks_per_row
-    print "*"
-  end
-
-  num_asterisks_per_row += 1
-
-  puts
-  
+for i in 1..input
+  puts "*" * i
 end
