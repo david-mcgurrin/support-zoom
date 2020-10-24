@@ -58,7 +58,7 @@ puts "Rock Paper Scissors"
 print "Player 1 - Enter your selection: "
 input1 = gets.downcase.chomp
 
-print "Player 1 - Enter your selection: "
+print "Player 2 - Enter your selection: "
 input2 = gets.downcase.chomp
 
 if (choices.include? input1) && (choices.include? input2)
