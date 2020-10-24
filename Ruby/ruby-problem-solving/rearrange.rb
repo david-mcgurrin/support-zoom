@@ -22,7 +22,7 @@ end
 
 number = number.to_i
 
-numbers = number.to_s.split('');
+numbers = number.to_s.split('')
 
 sorted = numbers.first == "-" ? negative_sort(numbers) : numbers.sort.reverse.join("").to_i
 
