@@ -34,7 +34,22 @@ class Dog < Animal
 end
 
 class Bird < Animal
+  def talk
+    puts "#{@name} says Chirp!"
+  end
 end
 
 class Cat < Animal
+  def talk
+    puts "#{@name} says Meow!"
+  end
 end
+
+whiskers = Cat.new
+whiskers.name = "Whiskers"
+
+polly = Bird.new
+polly.name = "Polly"
+
+whiskers.talk
+polly.talk
