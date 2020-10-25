@@ -1,5 +1,5 @@
 class Vehicle
-  
+
   attr_accessor :odometer
   attr_accessor :gas_used
 
@@ -20,71 +20,23 @@ class Vehicle
   end
 end
 
-class Car
+class Car < Vehicle
+end
 
-  attr_accessor :odometer
-  attr_accessor :gas_used
+class Truck < Vehicle
 
-  def mileage
-    @odometer / @gas_used
-  end
+  attr_accessor :cargo
 
-  def accelerate
-    puts "Floor it!"
-  end
-
-  def sound_horn
-    puts "Beep! Beep!"
-  end
-
-  def steer
-    puts "Turn front 2 wheels."
+  def load_bed(contents)
+    puts "Securing #{contents} in the truck bed."
+    @cargo = contents
   end
 
 end
 
-class Truck
-
-  attr_accessor :odometer
-  attr_accessor :gas_used
-
-  def mileage
-    @odometer / @gas_used
-  end
-
-  def accelerate
-    puts "Floor it!"
-  end
-
-  def sound_horn
-    puts "Beep! Beep!"
-  end
-
-  def steer
-    puts "Turn front 2 wheels."
-  end
-  
+class Motorcycle < Vehicle
 end
 
-class Motorcycle
-
-  attr_accessor :odometer
-  attr_accessor :gas_used
-
-  def mileage
-    @odometer / @gas_used
-  end
-
-  def accelerate
-    puts "Floor it!"
-  end
-
-  def sound_horn
-    puts "Beep! Beep!"
-  end
-
-  def steer
-    puts "Turn front 2 wheels."
-  end
-  
-end
+truck = Truck.new
+truck.load_bed("259 bouncy balls")
+puts "The truck is carrying #{truck.cargo}"
