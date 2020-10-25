@@ -40,3 +40,8 @@ end
 truck = Truck.new
 truck.load_bed("259 bouncy balls")
 puts "The truck is carrying #{truck.cargo}"
+puts
+truck.odometer = 11432
+truck.gas_used = 366
+puts "Average MPG:"
+puts truck.mileage
