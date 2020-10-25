@@ -31,6 +31,10 @@ class Animal
 end
 
 class Dog < Animal
+
+  def to_s
+    "#{@name} the dog, age #{age}"
+  end
 end
 
 class Bird < Animal
@@ -66,3 +70,13 @@ polly.talk
 dillon = Armadillo.new
 dillon.name = "Dillon"
 dillon.move("burrow")
+
+lucy = Dog.new
+lucy.name = "Lucy"
+lucy.age = 4
+
+rex = Dog.new
+rex.name = "Rex"
+rex.age = 2
+
+puts lucy.to_s, rex.to_s
