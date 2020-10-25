@@ -35,6 +35,11 @@ class Truck < Vehicle
 end
 
 class Motorcycle < Vehicle
+
+  def steer
+    puts "Turn front wheel."
+  end
+
 end
 
 truck = Truck.new
@@ -45,3 +50,9 @@ truck.odometer = 11432
 truck.gas_used = 366
 puts "Average MPG:"
 puts truck.mileage
+
+puts 
+
+motorcycle = Motorcycle.new
+motorcycle.steer
+motorcycle.accelerate
