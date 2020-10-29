@@ -8,7 +8,7 @@ end
 
 input = input.to_i
 
-for i in 1..input
+1.upto(input) do |i|
   print " " * (input - i)
   puts "* " * i
 end
