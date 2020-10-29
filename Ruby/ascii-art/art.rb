@@ -8,9 +8,7 @@ end
 
 input = input.to_i
 
-input.downto(1) do |i|
-  num_spaces = i - 1
-  num_asterisks = input - i + 1
-
-  puts " " * num_spaces + "*" * num_asterisks
+1.upto(input) do |i|
+  print " " * (input - i)
+  puts "* " * i
 end
