@@ -8,6 +8,6 @@ end
 
 input = input.to_i
 
-for i in 1..input
-  puts "*" * i
+input.times do |i|
+  puts "*" * (i + 1)
 end
