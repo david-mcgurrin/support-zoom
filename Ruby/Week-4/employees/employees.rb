@@ -13,6 +13,10 @@ class Employee
     puts "Name: #{name}"
   end
 
+  def initialize(name = "Anonymous")
+    self.name = name
+  end
+
 end
 
 class SalariedEmployee < Employee
@@ -34,7 +38,7 @@ class SalariedEmployee < Employee
   end
 
   def initialize(name = "Anonymous", salary = 0.0)
-    self.name = name
+    super(name)
     self.salary = salary
   end
 
@@ -67,7 +71,7 @@ class HourlyEmployee < Employee
   end
 
   def initialize(name = "Anonymous", hourly_wage = 0.0, hours_per_week = 0.0)
-    self.name = name
+    super(name)
     self.hourly_wage = hourly_wage
     self.hours_per_week = hours_per_week
   end
