@@ -12,3 +12,8 @@ input = input.to_i
   print " " * (input - i)
   puts "* " * i
 end
+
+(input - 1).downto(1) do |i|
+  print " " * (input - i)
+  puts "* " * i
+end
