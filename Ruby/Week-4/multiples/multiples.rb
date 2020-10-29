@@ -18,7 +18,7 @@ puts "\nMethod call with block which doubles the original numbers"
 customized_list_of_multiples(5, 5) { |list| list.map { |x| x += x } }
 
 puts "\nMethod call with block which squares the original numbers"
-customized_list_of_multiples(5,5) do |list|
+customized_list_of_multiples(5, 5) do |list|
   
   list.each_with_index do |num, index|
     list[index] = num * num
