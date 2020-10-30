@@ -77,7 +77,7 @@ puts jim.energy
 
 jim.medals(silver: "gymnastics")
 jim.medals(gold: "swimming")
-puts "The medals for #{tim.name} are as follows:"
+puts "The medals for #{jim.name} are as follows:"
 jim.display_medals
 
 puts
