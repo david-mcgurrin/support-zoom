@@ -1,11 +1,7 @@
 module AcceptsComments
 
   def comments
-    if @comments
-      @comments
-    else
-      @comments = []
-    end
+    @comments ||= []
   end
 
   def add_comment(comment)
@@ -36,7 +32,7 @@ class Photo
   include AcceptsComments
 
   def show
-    puts "Displaying #{object_id}"
+    puts "Displaying #{object_id}..."
   end
 
 end
@@ -46,15 +42,12 @@ video.add_comment("Cool slow motion effect!")
 video.add_comment("Weired ending.")
 song = Song.new
 song.add_comment("Awesome beat.")
-
-p video.comments, song.comments
-
-video.play
-song.play
-
 photo = Photo.new
 photo.add_comment("Beautiful colours.")
 
-p photo.comments
-
+video.play
+song.play
 photo.show
+
+p video.comments, song.comments, photo.comments
+
