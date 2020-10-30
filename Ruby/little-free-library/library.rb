@@ -90,7 +90,7 @@ until choice == 4
     
     if user_books.compact.length > 0
       
-      book_to_return =  user_books.find { |book| book.first[0].downcase.include? book_choice }
+      book_to_return =  user_books.find { |book| book.first[0].downcase.include? book_choice unless book == nil }
 
       if book_to_return
         user_books.delete(return_book(library, book_to_return))
