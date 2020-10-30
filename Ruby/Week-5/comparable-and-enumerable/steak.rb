@@ -5,7 +5,6 @@ class Steak
   attr_accessor :grade
 
   def > (other)
-    
     GRADE_SCORES[grade] > GRADE_SCORES[other.grade]
   end
 
