@@ -53,6 +53,8 @@ class Athlete
   end
 
   def competition(participants, sport)
+
+    puts "Entering a #{sport} competition"
   
     position = rand(participants) + 1
 
@@ -67,7 +69,7 @@ class Athlete
 
     self.add_medals(medal => sport) if position <= 3
 
-    @energy -= 80
+    @energy -= 60
     
   end
 
@@ -78,6 +80,8 @@ class Athlete
   def display_medals
 
     @medals_won.sort_by! { |medal| MEDAL_PRIORITY[medal.first[0]] }
+
+    puts "The medals for #{@name} are as follows:" if @medals_won.length > 0
 
     @medals_won.each { |medal| medal.each { |k,v| puts "#{k.capitalize}: #{v.capitalize}"} }
 

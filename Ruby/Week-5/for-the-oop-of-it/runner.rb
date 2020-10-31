@@ -20,7 +20,7 @@ class Runner < Athlete
   end
 
   def relax
-    puts "Chill in front of the TV"
+    puts "Chilling in front of the TV"
     @energy += 20
   end
 

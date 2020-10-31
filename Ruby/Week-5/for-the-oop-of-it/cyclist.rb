@@ -21,7 +21,13 @@ class Cyclist < Athlete
 
   def drug_test
 
-    @medals_won = [] if @name.include? "Lance"
+    cheater = @name.include? "Lance"
+
+    puts "Conducting a drug test"
+
+    @medals_won = [] if cheater
+
+    puts cheater ? "Stripped of all medals!" : "Clean, keep it up!"
 
   end
 
