@@ -3,7 +3,7 @@ class Athlete
   @@num_athletes = 0
   @@club = "Galway Athletic Club"
 
-  MEDAL_PRIORITY = {:gold => 1, :silver => 2, :bronze => 3}
+  MEDAL_PRIORITY = {"Gold" => 1, "Silver" => 2, "Bronze" => 3}
 
   attr_reader :name, :age, :exp, :energy
 
@@ -52,6 +52,25 @@ class Athlete
     @energy += 50
   end
 
+  def race(participants, sport)
+  
+    position = rand(participants) + 1
+
+    case position
+    when 1
+      medal = "Gold"
+    when 2
+      medal = "Silver"
+    when 3
+      medal = "Bronze"
+    end
+
+    self.add_medals(medal => sport) if position <= 3
+
+    @energy -= 80
+    
+  end
+
   def add_medals(medal)
     @medals_won << medal
   end
@@ -61,7 +80,7 @@ class Athlete
     @medals_won.sort_by! { |medal| MEDAL_PRIORITY[medal.first[0]] }
 
     @medals_won.each { |medal| medal.each { |k,v| puts "#{k.capitalize}: #{v.capitalize}"} }
-    
+
   end
 
   def self.athlete_count
