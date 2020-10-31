@@ -13,7 +13,7 @@ class Runner < Athlete
     @energy -= 70
   end
 
-  def race(participants)
+  def competition(participants)
 
     super(participants, "Running")
     

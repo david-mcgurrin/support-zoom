@@ -52,7 +52,7 @@ class Athlete
     @energy += 50
   end
 
-  def race(participants, sport)
+  def competition(participants, sport)
   
     position = rand(participants) + 1
 
