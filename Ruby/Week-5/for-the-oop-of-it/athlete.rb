@@ -1,3 +1,5 @@
+require_relative 'mixins'
+
 class Athlete
 
   @@num_athletes = 0
