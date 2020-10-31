@@ -1,43 +1,45 @@
 class Athlete
 
   @@num_athletes = 0
+  @@club = "Galway Athletic Club"
 
-  attr_reader :name, :age, :exp, :club, :energy
+  MEDAL_PRIORITY = {:gold => 1, :silver => 2, :bronze => 3}
 
-  def initialize(name, age, exp)
-    @name = name
-    @age = age
-    @exp = exp
-    @club = "Galway"
+  attr_reader :name, :age, :exp, :energy
+
+  def initialize(name = "Anonymous", age = "20", exp = "amateur")
+    self.name = name
+    self.age = age
+    self.exp = exp
     @medals_won = []
     @energy = 100
     @@num_athletes += 1
   end
 
   def name=(name)
-    if name == ""
-      raise "Name can't be blank!"
+    if name == "" || !(name.is_a? String)
+      raise "Name can't be blank and must be a string!"
     end
     @name = name.capitalize
   end
 
   def age=(age)
-    if age < 0 || age > 100
+    if age.to_i < 0 || age.to_i > 120
       raise "Age of #{age} is not valid"
     end
     @age = age
   end
 
   def exp=(exp)
-    if exp == ""
-      raise "Experience can't be blank!"
+    if exp == "" || !(exp.is_a? String)
+      raise "Experience can't be blank and must be a string!"
     end
     @exp = exp.capitalize
   end
 
   def train
     puts "Going to the gym"
-    @energy -= 50
+    @energy -= 60
   end
 
   def eat
@@ -50,43 +52,24 @@ class Athlete
     @energy += 50
   end
 
-  def medals(medal)
-
+  def add_medals(medal)
     @medals_won << medal
-  
   end
 
   def display_medals
-    @medals_won.each { |medal| puts medal }
+
+    @medals_won.sort_by! { |medal| MEDAL_PRIORITY[medal.first[0]] }
+
+    @medals_won.each { |medal| medal.each { |k,v| puts "#{k.capitalize}: #{v.capitalize}"} }
+    
   end
 
   def self.athlete_count
     @@num_athletes
   end
 
+  def self.club
+    @@club
+  end
+
 end
-
-
-jim = Athlete.new("Jim", 20, "amatuer")
-jim.train
-jim.eat
-jim.sleep
-puts jim.name
-puts jim.age
-puts jim.energy
-
-jim.medals(silver: "gymnastics")
-jim.medals(gold: "swimming")
-puts "The medals for #{jim.name} are as follows:"
-jim.display_medals
-
-puts
-
-tim = Athlete.new("Tim", 30, "professional")
-annie = Athlete.new("Annie", 25, "professional")
-
-tim.medals(gold: "cycling")
-puts "The medals for #{tim.name} are as follows:"
-tim.display_medals
-
-puts "The total number of athletes in the club is #{Athlete.athlete_count}"
