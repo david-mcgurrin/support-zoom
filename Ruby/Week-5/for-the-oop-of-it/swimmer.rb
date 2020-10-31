@@ -2,22 +2,26 @@ require_relative 'athlete'
 
 class Swimmer < Athlete
 
+  attr_accessor :fave_style
+
   def initialize(name, age, exp)
     super
   end
 
   def train
     puts "Going to the pool"
+    @energy -= 70
+  end
+
+  def race(participants)
+
+    super(participants, "Swimming")
+
+  end
+
+  def dive
+    puts "Jumping from the top of Blackrock pier"
+    @energy -= 5
   end
 
 end
-
-puts
-
-steve = Swimmer.new("Steve", 20, "amatuer")
-
-puts steve.name, steve.age
-
-steve.eat
-steve.sleep
-steve.train
