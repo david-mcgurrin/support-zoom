@@ -122,6 +122,64 @@ class Plant < Organism
 
 end
 
+class Spaceship
+
+  def initialize(fuel, distance = 10000)
+    @fuel = fuel
+    @distance = distance
+    @organisms = []
+  end
+
+  def board(org)
+    @organisms << org
+  end
+
+  def unboard
+    @organisms.pop
+    @organisms
+  end
+
+  def role_check
+    @organisms.each_with_index do |o, i|
+      puts "  #{i + 1} #{o.to_s}"
+    end
+  end
+
+  def blast_off()
+
+    puts "Taking off!"
+    puts "Initiate countdown timer:"
+    t = Time.new(0)
+    countdown_time_in_seconds = 3
+
+    countdown_time_in_seconds.downto(1) do |seconds|
+      puts (t + seconds).strftime('%S')
+      sleep 1
+    end
+    puts "Blast off!!!"
+
+    puts
+    countdown_time_in_seconds = 10
+
+    puts "Travelling towards Keplar-1649c"
+    puts
+
+    incremental_dist = @distance / countdown_time_in_seconds
+
+    incremental_fuel = @fuel /  countdown_time_in_seconds
+
+    countdown_time_in_seconds.downto(1) do |seconds|
+      percentage_remaining = (incremental_fuel * seconds).to_f / @fuel.to_f * 100
+      puts "#{@distance - (incremental_dist * seconds) + incremental_dist} light years travelled. \tFuel at #{incremental_fuel * seconds} (#{percentage_remaining}%)"
+      puts "FUEL CRITICAL!" if percentage_remaining < 20
+      sleep 1
+    end
+    puts "\nArrived!"    
+
+  end
+
+end
+
 
 mammal = Mammal.new("Bucky O'Hare", "green", ["land"])
 
@@ -135,61 +193,26 @@ fish = Fish.new("Big Mouth Billy Bass", "blue", ["sea"])
 
 plant = Plant.new("Astro Turf", "orange", ["land", "sea"])
 
-mammal.move
-mammal.fight
-mammal.breathe
-mammal.reproduce
-mammal.eat
-mammal.rest
+spaceship = Spaceship.new(5760, 1000000)
 
-puts "Their current energy is #{mammal.energy}"
-puts
+spaceship.board(mammal)
 
-bird.move
-bird.fight
-bird.breathe
-bird.reproduce
-bird.eat
-bird.rest
+spaceship.board(bird)
 
-puts "Their current energy is #{bird.energy}"
-puts
+spaceship.board(reptile)
 
-reptile.move
-reptile.fight
-reptile.breathe
-reptile.reproduce
-reptile.eat(mammal.class)
-reptile.rest
+spaceship.board(insect)
 
-puts "Their current energy is #{reptile.energy}"
-puts
+spaceship.board(fish)
 
-insect.move
-insect.fight
-insect.breathe
-insect.reproduce
-insect.eat
-insect.rest
+spaceship.board(plant)
 
-puts "Their current energy is #{insect.energy}"
-puts
+puts "Travelling to Kepler-1649c"
 
-fish.move
-fish.fight
-fish.breathe
-fish.reproduce
-fish.eat
-fish.rest
+puts "Last minute role call:"
 
-puts "Their current energy is #{fish.energy}"
-puts
+spaceship.role_check
 
-plant.move
-plant.breathe
-plant.reproduce
-plant.eat
-plant.rest
+puts "\nReady to go\n"
 
-puts "Their current energy is #{plant.energy}"
-puts
+spaceship.blast_off
