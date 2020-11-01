@@ -41,7 +41,7 @@ class Athlete
     if exp == "" || !(exp.is_a? String)
       raise "Experience can't be blank and must be a string!"
     end
-    @exp = exp.capitalize
+    @exp = exp.downcase
   end
 
   def train
