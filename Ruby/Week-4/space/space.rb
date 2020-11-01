@@ -159,7 +159,7 @@ reptile.move
 reptile.fight
 reptile.breathe
 reptile.reproduce
-reptile.eat
+reptile.eat(mammal.class)
 reptile.rest
 
 puts "Their current energy is #{reptile.energy}"
