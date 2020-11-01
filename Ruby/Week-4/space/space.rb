@@ -1,5 +1,6 @@
 class Organism
 
+  @@num_organisms = 0
   attr_accessor :name, :color, :energy
 
   def initialize(name, color, habitat)
@@ -7,6 +8,7 @@ class Organism
     @color = color
     @habitat = habitat
     @energy = 100
+    @@num_organisms += 1
   end
 
   def move
@@ -39,6 +41,10 @@ class Organism
 
   def to_s
     "#{self.name} - #{self.class}"
+  end
+
+  def self.num_organisms
+    @@num_organisms
   end
 
 end
@@ -180,6 +186,32 @@ class Spaceship
 
 end
 
+class Planet
+
+  attr_accessor :num_moons, :num_rings, :atmosphere
+
+  def initialize(num_moons, num_rings, atmosphere)
+    @num_moons = num_moons
+    @num_rings = num_rings
+    @atmosphere = atmosphere
+  end
+
+  def planet_info
+    puts "Keplar-1649c has #{num_moons} moons, #{num_rings} rings and an atmosphere of #{atmosphere}"
+  end
+
+  def inhabitants(num_organisms, year=1)
+    puts year > 876500 ? "There are 0 organisms in year #{year} due to the War of 876500 AS (After Spaceship)" :  "There are #{num_organisms * year} organisms living in the year #{year}"
+  end
+
+  def fast_forward
+
+    rand(1000000)
+
+  end
+
+end
+
 
 mammal = Mammal.new("Bucky O'Hare", "green", ["land"])
 
@@ -193,7 +225,11 @@ fish = Fish.new("Big Mouth Billy Bass", "blue", ["sea"])
 
 plant = Plant.new("Astro Turf", "orange", ["land", "sea"])
 
+num_organisms = Organism.num_organisms
+
 spaceship = Spaceship.new(5760, 1000000)
+
+planet = Planet.new(7, 3, "dihydrogen monoxide")
 
 spaceship.board(mammal)
 
@@ -216,3 +252,11 @@ spaceship.role_check
 puts "\nReady to go\n"
 
 spaceship.blast_off
+
+planet.planet_info
+
+planet.inhabitants(num_organisms)
+
+future_year = planet.fast_forward
+
+planet.inhabitants(num_organisms, future_year)
