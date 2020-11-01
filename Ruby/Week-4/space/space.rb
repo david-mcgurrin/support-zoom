@@ -14,6 +14,11 @@ class Organism
     @energy -= 20
   end
 
+  def fight
+    puts "#{@name} fights a rival"
+    @energy -= 20
+  end
+
   def reproduce
     puts "#{@name} finds a suitable mate"
   end
@@ -24,19 +29,65 @@ class Organism
 
   def eat(food="food")
     puts "#{@name} eats some #{food}"
+    @energy += 20
   end
 
   def rest
     puts "ZZzzzz"
     puts "#{@name} finds a suitable mate"
+    @energy += 50
   end
 
-  def print_name
-    puts "The organism's name is #{name}"
+  def print_details
+    puts "The organism's name is #{name}. Their ideal habitat is #{habitat}"
   end
 
   def to_s
     "#{self.name} - #{self.class}"
+  end
+
+end
+
+
+class Mammal < Organism
+
+end
+
+class Insect < Organism
+
+  def move
+    puts "#{@name} flies through the planet"
+    @energy -= 20
+  end
+
+end
+
+class Reptile < Organism
+
+end
+
+class Bird < Organism
+
+  def move
+    puts "#{@name} flies through the planet"
+    @energy -= 20
+  end
+end
+
+class Fish < Organism
+
+  def move
+    puts "#{@name} swims through the planet"
+    @energy -= 20
+  end
+
+end
+
+class Plant < Organism
+
+  def move
+    puts "#{@name} grows across the planet"
+    @energy -= 20
   end
 
 end
