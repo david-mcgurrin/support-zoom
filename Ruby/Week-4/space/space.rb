@@ -152,7 +152,6 @@ class Spaceship
   end
 
   def blast_off()
-
     puts "Taking off!"
     puts "Initiate countdown timer:"
     t = Time.new(0)
@@ -163,8 +162,11 @@ class Spaceship
       sleep 1
     end
     puts "Blast off!!!"
+  
+  end
 
-    puts
+  def space_travel
+
     countdown_time_in_seconds = 10
 
     puts "Travelling towards Keplar-1649c"
@@ -180,6 +182,7 @@ class Spaceship
       puts "FUEL CRITICAL!" if percentage_remaining < 20
       sleep 1
     end
+
     puts "\nArrived!"    
 
   end
@@ -201,7 +204,7 @@ class Planet
   end
 
   def inhabitants(num_organisms, year=1)
-    puts year > 876500 ? "There are 0 organisms in year #{year} due to the War of 876500 AS (After Spaceship)" :  "There are #{num_organisms * year} organisms living in the year #{year}"
+    puts year > 653907 ? "There are 0 organisms in year #{year} due to the War of 653907 AS (After Spaceship)" :  "There are #{num_organisms * year} organisms living in the year #{year}"
   end
 
   def fast_forward
@@ -249,9 +252,17 @@ puts "Last minute role call:"
 
 spaceship.role_check
 
-puts "\nReady to go\n"
+puts "\nReady to go"
+
+puts
 
 spaceship.blast_off
+
+puts
+
+spaceship.space_travel
+
+puts
 
 planet.planet_info
 
