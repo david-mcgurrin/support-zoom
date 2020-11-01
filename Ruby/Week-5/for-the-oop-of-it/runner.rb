@@ -1,6 +1,9 @@
 require_relative 'athlete'
+require_relative 'mixins'
 
 class Runner < Athlete
+
+  include IncreaseTraining
 
   attr_accessor :distance
 
@@ -20,7 +23,7 @@ class Runner < Athlete
   end
 
   def relax
-    puts "Chilling in front of the TV"
+    puts "#{name} is chilling in front of the TV"
     @energy += 20
   end
 

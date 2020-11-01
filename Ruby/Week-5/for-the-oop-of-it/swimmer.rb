@@ -1,4 +1,5 @@
 require_relative 'athlete'
+require_relative 'mixins'
 
 class Swimmer < Athlete
 
