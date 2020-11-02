@@ -24,7 +24,33 @@ class Domino
   end
 
   def to_s
-    puts "#{top} \n-\n#{bottom}"
+    
+    @domino_string = "-----"
+
+    [@top, @bottom].each do |side|
+      case side
+      when 0
+        @domino_string += "\n|   |\n|   |\n|   |"
+      when 1
+        @domino_string += "\n|   |\n| # |\n|   |"
+      when 2
+        @domino_string += "\n|#  |\n|   |\n|  #|"
+      when 3
+        @domino_string += "\n|#  |\n| # |\n|  #|"
+      when 4
+        @domino_string += "\n|# #|\n|   |\n|# #|"
+      when 5
+        @domino_string += "\n|# #|\n| # |\n|# #|"
+      when 6
+        @domino_string += "\n|# #|\n|# #|\n|# #|"
+      end
+
+      @domino_string += "\n-----"
+
+    end
+
+    puts "#{@domino_string}"
+
   end
 
   def self.create_dominoes_array
@@ -59,6 +85,8 @@ end
 puts "Single Domino"
 domino = Domino.new(2, 3)
 domino.to_s
+
+puts
 
 puts "Double Six of Dominoes"
 dominoes_array = Domino.create_dominoes_array
