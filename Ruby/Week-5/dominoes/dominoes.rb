@@ -24,10 +24,10 @@ class Domino
   end
 
   def to_s
-    
     @domino_string = "-----"
 
     [@top, @bottom].each do |side|
+
       case side
       when 0
         @domino_string += "\n|   |\n|   |\n|   |"
@@ -50,15 +50,17 @@ class Domino
     end
 
     puts "#{@domino_string}"
-
   end
 
   def self.create_dominoes_array
   
     (0..6).each do |i|
+
       (0..i).each do |j|
+
         @@dominoes_array << [j, i]
       end
+
     end
 
     @@dominoes_array
@@ -66,17 +68,11 @@ class Domino
   end
 
   def swap_tops_and_bottoms(dominoes)
-
     dominoes.map { |d| d.reverse }
-  
   end
 
-  def find_dominoes_with(dominoes, num_dots)
-
-    dominoes.find_all do |d|
-      d.first == num_dots || d.last == num_dots
-    end
-
+  def find_dominoes_with(dominoes,num_dots)
+    dominoes.find_all { |d| d.first == num_dots || d.last == num_dots }
   end
   
 
@@ -100,6 +96,7 @@ end
 puts
 puts
 
+puts "Swap method"
 swapped = domino.swap_tops_and_bottoms(dominoes_array)
 
 swapped.each do |d|
@@ -108,6 +105,14 @@ swapped.each do |d|
   puts
 end
 
-
-print domino.find_dominoes_with(dominoes_array, 4)
 puts
+puts
+
+puts "Find method"
+found = domino.find_dominoes_with(dominoes_array, 4)
+
+found.each do |d|
+  d = Domino.new(d.first, d.last)
+  d.to_s
+  puts
+end
