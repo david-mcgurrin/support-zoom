@@ -37,15 +37,15 @@ class GradeBookTest < Minitest::Test
     assert_equal(expected, actual)
   end
 
+  def test_letter_grade_method
+    assert_raises(NoMethodError) { @grade_book.letter_grade("christine") }
+  end
+
   def test_converting_number_to_grade
     actual = 78.5.to_grade
     expected = "B"
 
     assert_equal(expected, actual)
-  end
-
-  def test_letter_grade_method
-    assert_raises(NoMethodError) { @grade_book.letter_grade("christine") }
   end
 
 end
