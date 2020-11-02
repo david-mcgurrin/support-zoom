@@ -73,13 +73,11 @@ class Domino
   end
 
   def self.loop_through_array(arr)
-
     arr.each do |d|
       d = Domino.new(d.first, d.last)
       d.to_s
       puts
     end
-  
   end
 
 end
