@@ -53,18 +53,15 @@ class Domino
   end
 
   def self.create_dominoes_array
-  
     (0..6).each do |i|
 
       (0..i).each do |j|
-
         @@dominoes_array << [j, i]
       end
 
     end
 
     @@dominoes_array
-  
   end
 
   def swap_tops_and_bottoms(dominoes)
@@ -74,9 +71,20 @@ class Domino
   def find_dominoes_with(dominoes,num_dots)
     dominoes.find_all { |d| d.first == num_dots || d.last == num_dots }
   end
+
+  def self.loop_through_array(arr)
+
+    arr.each do |d|
+      d = Domino.new(d.first, d.last)
+      d.to_s
+      puts
+    end
   
+  end
 
 end
+
+
 
 puts "Single Domino"
 domino = Domino.new(2, 3)
@@ -87,11 +95,7 @@ puts
 puts "Double Six of Dominoes"
 dominoes_array = Domino.create_dominoes_array
 
-dominoes_array.each do |d|
-  d = Domino.new(d.first, d.last)
-  d.to_s
-  puts
-end
+Domino.loop_through_array(dominoes_array)
 
 puts
 puts
@@ -99,11 +103,7 @@ puts
 puts "Swap method"
 swapped = domino.swap_tops_and_bottoms(dominoes_array)
 
-swapped.each do |d|
-  d = Domino.new(d.first, d.last)
-  d.to_s
-  puts
-end
+Domino.loop_through_array(swapped)
 
 puts
 puts
@@ -111,8 +111,4 @@ puts
 puts "Find method"
 found = domino.find_dominoes_with(dominoes_array, 4)
 
-found.each do |d|
-  d = Domino.new(d.first, d.last)
-  d.to_s
-  puts
-end
+Domino.loop_through_array(found)
