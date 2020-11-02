@@ -37,7 +37,22 @@ class Domino
 
     @@dominoes_array
   
-  end  
+  end
+
+  def swap_tops_and_bottoms(dominoes)
+
+    dominoes.map { |d| d.reverse }
+  
+  end
+
+  def find_dominoes_with(dominoes, num_dots)
+
+    dominoes.find_all do |d|
+      d.first == num_dots || d.last == num_dots
+    end
+
+  end
+  
 
 end
 
@@ -53,3 +68,18 @@ dominoes_array.each do |d|
   d.to_s
   puts
 end
+
+puts
+puts
+
+swapped = domino.swap_tops_and_bottoms(dominoes_array)
+
+swapped.each do |d|
+  d = Domino.new(d.first, d.last)
+  d.to_s
+  puts
+end
+
+
+print domino.find_dominoes_with(dominoes_array, 4)
+puts
