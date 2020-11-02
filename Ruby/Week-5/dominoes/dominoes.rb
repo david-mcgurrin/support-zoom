@@ -27,9 +27,29 @@ class Domino
     puts "#{top} \n-\n#{bottom}"
   end
 
+  def self.create_dominoes_array
+  
+    (0..6).each do |i|
+      (0..i).each do |j|
+        @@dominoes_array << [j, i]
+      end
+    end
+
+    @@dominoes_array
+  
+  end  
+
 end
 
 puts "Single Domino"
 domino = Domino.new(2, 3)
 domino.to_s
 
+puts "Double Six of Dominoes"
+dominoes_array = Domino.create_dominoes_array
+
+dominoes_array.each do |d|
+  d = Domino.new(d.first, d.last)
+  d.to_s
+  puts
+end
