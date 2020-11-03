@@ -21,4 +21,11 @@ class AsciiArtTest < Minitest::Test
     assert_equal(expected, actual)
   end
 
+  def test_multiple_rows
+    actual = @art.draw(2)
+    expected = " * \n* * \n * \n"
+
+    assert_equal(expected, actual)
+  end
+
 end
