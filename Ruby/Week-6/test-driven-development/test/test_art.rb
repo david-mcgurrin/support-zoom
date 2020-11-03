@@ -14,4 +14,11 @@ class AsciiArtTest < Minitest::Test
     assert_equal(expected, actual)
   end
 
+  def test_single_input
+    actual = @art.draw(1)
+    expected = "* \n"
+
+    assert_equal(expected, actual)
+  end
+
 end
