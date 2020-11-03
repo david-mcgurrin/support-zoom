@@ -28,4 +28,11 @@ class AsciiArtTest < Minitest::Test
     assert_equal(expected, actual)
   end
 
+  def test_larger_number
+    actual = @art.draw(5)
+    expected = "    * \n   * * \n  * * * \n * * * * \n* * * * * \n * * * * \n  * * * \n   * * \n    * \n"
+
+    assert_equal(expected, actual)
+  end
+  
 end
