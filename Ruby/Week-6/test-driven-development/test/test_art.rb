@@ -7,4 +7,11 @@ class AsciiArtTest < Minitest::Test
     @art = AsciiArt.new
   end
 
+  def test_zero_input
+    actual = @art.draw(0)
+    expected = ""
+
+    assert_equal(expected, actual)
+  end
+
 end
