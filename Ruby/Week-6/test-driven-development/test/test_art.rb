@@ -34,5 +34,9 @@ class AsciiArtTest < Minitest::Test
 
     assert_equal(expected, actual)
   end
-  
+
+  def test_incorrect_input
+    assert_raises(ArgumentError) { @art.draw("five") }
+  end
+
 end
