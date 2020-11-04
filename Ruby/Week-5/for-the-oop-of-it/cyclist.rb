@@ -2,6 +2,8 @@ require_relative 'athlete'
 
 class Cyclist < Athlete
 
+  include IncreaseTraining
+  
   attr_accessor :cycling_style
 
   def initialize(name, age, exp)

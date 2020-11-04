@@ -1,11 +1,18 @@
+require_relative 'mixins'
+
 class Athlete
+
+  include Rest
+  include Improvement
 
   @@num_athletes = 0
   @@club = "Galway Athletic Club"
 
   MEDAL_PRIORITY = {"Gold" => 1, "Silver" => 2, "Bronze" => 3}
 
-  attr_reader :name, :age, :exp, :energy
+  attr_reader :name, :age, :exp, :energy, :medals_won
+  
+  attr_writer :energy, :exp
 
   def initialize(name = "Anonymous", age = "20", exp = "amateur")
     self.name = name
@@ -34,7 +41,7 @@ class Athlete
     if exp == "" || !(exp.is_a? String)
       raise "Experience can't be blank and must be a string!"
     end
-    @exp = exp.capitalize
+    @exp = exp.downcase
   end
 
   def train

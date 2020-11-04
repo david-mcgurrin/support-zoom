@@ -107,6 +107,22 @@ swimmer.sleep
 
 swimmer.competition(5)
 
+swimmer.sleep
+
+swimmer.competition(5)
+
+swimmer.sleep
+
+swimmer.competition(5)
+
+swimmer.sleep
+
+swimmer.competition(5)
+
+swimmer.sleep
+
+swimmer.competition(5)
+
 puts
 swimmer.dive
 
@@ -215,3 +231,51 @@ cyclist.display_medals
 
 puts
 puts "The total number of athletes in #{Athlete.club} is #{Athlete.athlete_count}"
+
+puts "\n"
+
+# Additional attributes
+puts "Additional Attributes"
+puts "-----"
+runner.distance = "middle distance"
+puts "#{runner.name} prefers running #{runner.distance}"
+amateur_cyclist.cycling_style = "road"
+puts "#{amateur_cyclist.name} is a #{amateur_cyclist.cycling_style} cyclist"
+swimmer.fave_style = "butterfly"
+puts "#{swimmer.name} specialises in #{swimmer.fave_style}"
+
+puts "\n\n"
+
+# MIXIN 1
+puts "Mixins"
+puts "-----"
+runner.circuits(5)
+
+# Error -> Mixin not added to the Swimmer class
+#swimmer.circuits(5)
+
+puts
+
+# MIXIN 2
+
+swimmer.relax
+
+amateur_cyclist.relax
+
+runner.relax # Overrides the mixin method
+
+puts
+
+# MIXIN 3
+
+puts "#{runner.name} is #{runner.exp}"
+
+runner.turn_pro(runner.medals_won) # Returns since already pro
+
+puts
+
+puts "#{swimmer.name} is #{swimmer.exp}"
+
+swimmer.turn_pro(swimmer.medals_won)
+
+puts "#{swimmer.name} is #{swimmer.exp}"
