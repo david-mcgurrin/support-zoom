@@ -32,6 +32,8 @@ def get_winner(input1, input2)
     end
   end
 
+  return "Draw" if winner == nil
+
   winning_player = winner == input1 ? "Player 1" : "Player 2"
 
   { "winner" => winner, "loser" => loser, "winning_player" => winning_player}
@@ -53,22 +55,36 @@ end
 
 choices = ['rock', 'paper', 'scissors']
 
-puts "Rock Paper Scissors"
+winner_found = false
 
-print "Player 1 - Enter your selection: "
-input1 = gets.downcase.chomp
+until winner_found
+  puts "Rock Paper Scissors"
 
-print "Player 2 - Enter your selection: "
-input2 = gets.downcase.chomp
+  print "Player 1 - Enter your selection: "
+  input1 = gets.downcase.chomp
 
-if (choices.include? input1) && (choices.include? input2)
+  print "Player 2 - Enter your selection: "
+  input2 = gets.downcase.chomp
 
-  result = get_winner(input1, input2)
+  if (choices.include? input1) && (choices.include? input2)
 
-  result_ouput(result)
+    result = get_winner(input1, input2)
 
-else
+    if result["winner"]
+      result_ouput(result)
+      winner_found = true
+    else
+      puts "Draw"
+      puts "Give it another go"
+      puts
+    end
 
-  puts "Oi, no cheating! Only Rock, Paper or Scissors allowed."
+  else
+
+    puts "Oi, no cheating! Only Rock, Paper or Scissors allowed."
+    puts "Give it another go"
+    puts
+
+  end
 
 end
