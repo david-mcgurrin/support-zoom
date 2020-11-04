@@ -1,63 +1,65 @@
-def get_winner(input1, input2)
+def find_winner(inputs_array)
 
-  input_values = {"rock" => 1, "paper" => 2, "scissors" => 3}
+  return false if inputs_array.first == inputs_array.last
 
-  value1 = input_values[input1]
-  value2 = input_values[input2]
-
-  case value1
-  when 1
-    if value2 == 3
-      winner = input1
-      loser = input2
-    elsif value2 == 2
-      winner = input2
-      loser = input1
-    end
-  when 2
-    if value2 == 1
-      winner = input1
-      loser = input2
-    elsif value2 == 3
-      winner = input2
-      loser = input1
-    end
-  when 3
-    if value2 == 2
-      winner = input1
-      loser = input2
-    elsif value2 == 1
-      winner = input2
-      loser = input1
-    end
+  if (inputs_array.include? "rock") && (inputs_array.include? "paper")
+    winner = "paper"
+    loser = "rock"
+  elsif (inputs_array.include? "rock") && (inputs_array.include? "scissors")
+    winner = "rock"
+    loser = "scissors"
+  else
+    winner = "scissors"
+    loser = "paper"
   end
 
-  return "Draw" if winner == nil
-
-  winning_player = winner == input1 ? "Player 1" : "Player 2"
+  winning_player = winner == inputs_array.first ? "Player 1" : "Player 2"
 
   { "winner" => winner, "loser" => loser, "winning_player" => winning_player}
 
 end
 
-def result_ouput(result)
+
+def result_ouput(result_hash, overall_winner)
 
   winner_verbs = {"rock" => "crushes", "paper" => "covers", "scissors" => "cuts"}
 
-  winner = result["winner"]
-  loser = result["loser"]
-  winning_player = result["winning_player"]
+  winner = result_hash["winner"]
+  loser = result_hash["loser"]
+  winning_player = result_hash["winning_player"]
 
   puts "#{winner.capitalize} #{winner_verbs[winner]} #{loser}"
-  puts "#{winning_player} wins"
+  puts
+
+  puts "#{winning_player} wins" if overall_winner
 
 end
 
+
+def find_overall_winner(winners)
+
+  win_count = 0
+
+  counts = Hash.new(0)
+
+  winners.each { |winner| counts[winner] += 1 }
+
+  counts.each { |k, v| win_count = v  if v == 3 }
+
+  return win_count >= 3 ?  true : false
+
+end
+
+
+# Start of main code
 choices = ['rock', 'paper', 'scissors']
+
+winners_array = []
 
 winner_found = false
 
 until winner_found
+
   puts "Rock Paper Scissors"
 
   print "Player 1 - Enter your selection: "
@@ -68,15 +70,22 @@ until winner_found
 
   if (choices.include? input1) && (choices.include? input2)
 
-    result = get_winner(input1, input2)
+    game_result = find_winner([input1, input2])
 
-    if result["winner"]
-      result_ouput(result)
-      winner_found = true
+    if game_result
+
+      winners_array << game_result["winning_player"]
+
+      winner_found = find_overall_winner(winners_array)
+
+      result_ouput(game_result, winner_found)
+
     else
-      puts "Draw"
+
+      puts "Draw!"
       puts "Give it another go"
       puts
+
     end
 
   else
