@@ -32,7 +32,9 @@ def get_winner(input1, input2)
     end
   end
 
-  [winner, loser]
+  winning_player = winner == input1 ? "Player 1" : "Player 2"
+
+  { "winner" => winner, "loser" => loser, "winning_player" => winning_player}
 
 end
 
@@ -40,7 +42,12 @@ def result_ouput(result)
 
   winner_verbs = {"rock" => "crushes", "paper" => "covers", "scissors" => "cuts"}
 
-  puts "#{result.first.capitalize} #{winner_verbs[result.first]} #{result.last}"
+  winner = result["winner"]
+  loser = result["loser"]
+  winning_player = result["winning_player"]
+
+  puts "#{winner.capitalize} #{winner_verbs[winner]} #{loser}"
+  puts "#{winning_player} wins"
 
 end
 
@@ -59,7 +66,7 @@ if (choices.include? input1) && (choices.include? input2)
   result = get_winner(input1, input2)
 
   result_ouput(result)
-  
+
 else
 
   puts "Oi, no cheating! Only Rock, Paper or Scissors allowed."
