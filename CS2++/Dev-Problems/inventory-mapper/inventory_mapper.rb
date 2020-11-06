@@ -3,7 +3,7 @@ class InventoryMapper
   attr_accessor :input, :inventory_hash
 
   def initialize(input)
-    @input = input.split("").sort
+    @input = input.split("")
     @inventory_hash = {"Shelf"=> 0, "Stool"=> 0, "Table"=> 0}
   end
 
@@ -19,9 +19,9 @@ class InventoryMapper
     
       @inventory_hash["Shelf"] = v if k == "a"
 
-      @inventory_hash["Stool"] = (letter_count["c"] / 3).floor if k == "b"
+      @inventory_hash["Stool"] = letter_count["c"] / 3 > v ? v : letter_count["c"] / 3 if k == "b"
 
-      @inventory_hash["Table"] = (letter_count["e"] / 4).floor if k == "d"
+      @inventory_hash["Table"] = letter_count["e"] / 4 > v ? v : letter_count["e"] / 4 if k == "d"
 
     end
 
