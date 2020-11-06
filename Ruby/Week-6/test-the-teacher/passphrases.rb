@@ -1,47 +1,39 @@
-input = File.read("input.txt").strip
-
-passphrases = input.split("\n")
-
-numValid = 0
-numValidAnagram = 0
-
-passphrases.each do |phrase|
-  words = phrase.split(" ")
-  words.sort!
-
-  sortedWords = Array.new(words)
-  sortedWords.each_with_index do |word, index|
-    sortedWords[index] = sortedWords[index].chars.sort.join
-    puts sortedWords, "\n"
+class PassphraseChecker
+  def self.sorted_words(phrase)
+    phrase.split(" ").sort
   end
 
-  sortedWords.sort!
-
-
-  ####
-  # Part 1 of problem checks for duplicate words
-
-  numValid += 1 # assume valid until proven otherwise
-  words.each_with_index do |word, index|
-    break if index == words.length-1
-    if word == words[index + 1]
-      numValid -= 1
-      break
+  def self.valid?(phrase)
+    words = sorted_words(phrase)
+    valid = true
+    words.each_with_index do |word, index|
+      if index == words.length-1
+        break
+      elsif word == words[index + 1]
+        valid = false
+        break
+      end
     end
+    valid
   end
 
-
-  ####
-  # Part 2 of problem checks for duplicate anagrams
-  numValidAnagram += 1 # assume valid until proven otherwise
-  sortedWords.each_with_index do |word, index|
-    break if index == sortedWords.length-1
-    if word == sortedWords[index + 1]
-      numValidAnagram -= 1
-      break
-    end
+  def self.num_valid(phrases)
+    phrases.count {|phrase| valid?(phrase)}
   end
 end
 
-puts "#{numValid} phrases are valid"
-puts "#{numValidAnagram} phrases are valid for anagrams"
+class AnagramPassphraseChecker < PassphraseChecker
+  def self.sorted_words(phrase)
+    sorted = phrase.split(" ").sort
+    sorted.each_with_index do |word, index|
+      sorted[index] = sorted[index].chars.sort.join
+    end
+    sorted.sort
+  end
+end
+
+# Comment out for testing
+
+# input = File.read("input.txt").strip.split("\n")
+# puts "#{PassphraseChecker.num_valid(input)} phrases are valid"
+# puts "#{AnagramPassphraseChecker.num_valid(input)} phrases are valid"
