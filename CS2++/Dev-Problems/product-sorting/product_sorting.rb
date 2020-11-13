@@ -1,23 +1,25 @@
-def product_sort(arr)
+class ProductSort
 
-  new_arr = arr.map do |x|
-    x.split(",")
+  attr_accessor :product_list, :sorted_products
+
+  INNER_SORT_REVERSE = -1
+
+  def initialize(product_list = [])
+    @product_list = product_list.map { |x| x.split(",") }
+    @sorted_products = []
   end
 
-  newer_arr = new_arr.sort_by do |x|
-    [x[1].to_i, x[2].to_i * -1]
+  def sort_products
+    @sorted_products = @product_list.sort_by { |x| [x[1].to_i, x[2].to_i * INNER_SORT_REVERSE] }.reverse!
   end
 
-  newer_arr.reverse!
-
-  newer_arr.each do |x|
-    print x[0]
-    puts
+  def print_sorted_products
+    sort_products
+    @sorted_products.each { |x| puts x.first }
   end
-
-  puts 
 
 end
+
 
 list = ["Selfie Stick,98,29",
   "iPhone Case,90,15",
@@ -40,10 +42,6 @@ list = ["Selfie Stick,98,29",
   "Gift Card,45,25",
   "Keyboard,82,19"]
 
+product_sort = ProductSort.new(list)
 
-
-
-
-product_sort(list)
-
-
+product_sort.print_sorted_products
