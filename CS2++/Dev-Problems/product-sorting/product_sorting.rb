@@ -3,6 +3,8 @@ class ProductSort
   attr_accessor :product_list, :sorted_products
 
   INNER_SORT_REVERSE = -1
+  POPULARITY_INDEX = 1
+  PRICE_INDEX = 2
 
   def initialize(product_list = [])
     @product_list = product_list.map { |x| x.split(",") }
@@ -10,7 +12,7 @@ class ProductSort
   end
 
   def sort_products
-    @sorted_products = @product_list.sort_by { |x| [x[1].to_i, x[2].to_i * INNER_SORT_REVERSE] }.reverse!
+    @sorted_products = @product_list.sort_by { |x| [x[POPULARITY_INDEX].to_i, x[PRICE_INDEX].to_i * INNER_SORT_REVERSE] }.reverse!
   end
 
   def print_sorted_products
