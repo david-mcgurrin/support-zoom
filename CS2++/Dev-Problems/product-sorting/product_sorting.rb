@@ -1,5 +1,5 @@
 class Product
-  
+
   attr_accessor :name, :popularity, :price
 
   def initialize(name, popularity, price)
@@ -48,7 +48,7 @@ class ProductSort
 end
 
 
-list = ["Selfie Stick,98,29",
+INPUT = ["Selfie Stick,98,29",
   "iPhone Case,90,15",
   "Fire TV Stick,48,49",
   "Wyze Cam,48,25",
@@ -70,7 +70,7 @@ list = ["Selfie Stick,98,29",
   "Keyboard,82,19"]
 
 
-products = Products.new(list).products_array
+products = Products.new(INPUT).products_array
 
 product_sort = ProductSort.new(products)
 
