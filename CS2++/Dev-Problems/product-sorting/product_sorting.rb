@@ -9,6 +9,7 @@ class Product
   end
 
 end
+
 class Products
 
   attr_accessor :list, :products
