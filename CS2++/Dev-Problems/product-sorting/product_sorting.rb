@@ -1,23 +1,48 @@
+class Product
+  
+  attr_accessor :name, :popularity, :price
+
+  def initialize(name, popularity, price)
+    @name = name
+    @popularity = popularity
+    @price = price
+  end
+
+end
+class Products
+
+  attr_accessor :list, :products
+
+  def initialize(list)
+    @list = list
+  end
+
+  def products_array
+    @products = @list.map do |product|
+      name, popularity, price = product.split(',')
+      Product.new(name, popularity.to_i, price.to_i)
+    end
+  end
+
+end
+
 class ProductSort
 
-  attr_accessor :product_list, :sorted_products
+  attr_accessor :list, :sorted_products
 
   INNER_SORT_REVERSE = -1
-  POPULARITY_INDEX = 1
-  PRICE_INDEX = 2
 
-  def initialize(product_list = [])
-    @product_list = product_list.map { |x| x.split(",") }
-    @sorted_products = []
+  def initialize(list)
+    @list = list
   end
 
   def sort_products
-    @sorted_products = @product_list.sort_by { |x| [x[POPULARITY_INDEX].to_i, x[PRICE_INDEX].to_i * INNER_SORT_REVERSE] }.reverse!
+    @sorted_products = @list.sort_by { |product| [product.popularity, product.price * INNER_SORT_REVERSE] }.reverse!
   end
 
   def print_sorted_products
     sort_products
-    @sorted_products.each { |x| puts x.first }
+    @sorted_products.each { |product| puts product.name }
   end
 
 end
@@ -44,6 +69,9 @@ list = ["Selfie Stick,98,29",
   "Gift Card,45,25",
   "Keyboard,82,19"]
 
-product_sort = ProductSort.new(list)
+
+products = Products.new(list).products_array
+
+product_sort = ProductSort.new(products)
 
 product_sort.print_sorted_products
