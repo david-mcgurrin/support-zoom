@@ -20,11 +20,23 @@ end
 # => [1]
 
 print "Please enter your search: "
-input = gets.chomp
+input = gets.chomp.split(" ")
 
 print input
+print input.length
+puts
 
-matches = inverted_index[input]
+matches = []
+
+input.each do |i|
+  puts i
+  matches << inverted_index[i]
+end
+
+print matches
+
 matches.each do |match|
-  puts product_listing[match][:name]
+  match.each do |m|
+    puts product_listing[m][:name]
+  end
 end
