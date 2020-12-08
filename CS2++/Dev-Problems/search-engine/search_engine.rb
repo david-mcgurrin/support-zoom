@@ -13,6 +13,11 @@ product_listing.each do |product|
   end
 end
 
+def list_duplicates(array)
+  duplicates = array.select { |e| array.count(e) > 1 }
+  duplicates.uniq
+end
+
 # puts inverted_index["steel"]
 # => [1, 2]
 
@@ -33,10 +38,16 @@ input.each do |i|
   matches << inverted_index[i]
 end
 
-print matches
+dupes = list_duplicates(matches.flatten)
 
-matches.each do |match|
-  match.each do |m|
-    puts product_listing[m][:name]
-  end
+dupes.each do |dup|
+  puts product_listing[dup][:name]
 end
+
+# print matches
+
+# matches.each do |match|
+#   match.each do |m|
+#     puts product_listing[m][:name]
+#   end
+# end
