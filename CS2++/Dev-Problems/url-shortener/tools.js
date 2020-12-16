@@ -1,4 +1,6 @@
+// Helper functions
 module.exports = {
+  // Get the unique shortlink
   makeid(length) {
     let result = '';
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
