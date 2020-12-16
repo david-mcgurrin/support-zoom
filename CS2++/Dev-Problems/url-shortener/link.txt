@@ -1,0 +1,1 @@
+{"originalUrl":"https://shopify.com","newURL":"http://localhost:4567/4bc8x"},{"originalUrl":"https://google.com","newURL":"http://localhost:4567/w3XtW"},
